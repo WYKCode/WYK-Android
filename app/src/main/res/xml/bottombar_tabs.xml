@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<tabs>
+    <tab
+        barColorWhenSelected="@color/feed"
+        icon="@drawable/ic_rss_feed_black_24dp"
+        id="@+id/tab_feed"
+        title="Feed" />
+    <tab
+        barColorWhenSelected="@color/publications"
+        icon="@drawable/ic_chrome_reader_mode_black_24dp"
+        id="@+id/tab_publications"
+        title="Publications" />
+    <!--<tab
+        barColorWhenSelected="@color/welfare"
+        icon="@drawable/ic_restaurant_menu_black_24dp"
+        id="@+id/tab_welfare"
+        title="Welfare" />-->
+    <tab
+        barColorWhenSelected="@color/funfair"
+        icon="@drawable/ic_child_care_black_24dp"
+        id="@+id/tab_funfair"
+        title="Fun Fair" />
+</tabs>

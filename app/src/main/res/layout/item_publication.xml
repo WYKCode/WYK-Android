@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/publication_card"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:foreground="?android:attr/selectableItemBackground"
+    android:stateListAnimator="@animator/lift_on_touch_intensive"
+    app:cardBackgroundColor="@color/md_grey_200"
+    app:cardCornerRadius="0dp"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <college.wyk.app.commons.label.StyledLabelImageView
+            android:id="@+id/publication_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            app:label_backgroundColor="@color/md_blue_grey_900"
+            app:label_distance="50dp"
+            app:label_height="32dp"
+            app:label_orientation="LEFT_TOP"
+            app:label_text="Offline" />
+
+        <LinearLayout
+            android:id="@+id/publication_fake_cover"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:visibility="invisible"
+            android:weightSum="1">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="0.55">
+
+                <TextView
+                    android:id="@+id/thats_all"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_alignParentEnd="true"
+                    android:layout_gravity="bottom|center_horizontal"
+                    android:layout_marginEnd="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="bottom|center_horizontal"
+                    android:text="That's all!"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="22sp"
+                    android:textStyle="italic" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@id/thats_all"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="4dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="bottom|center_horizontal"
+                    android:text=":)"
+                    android:textColor="@color/md_white_1000"
+                    android:textSize="40sp"
+                    android:textStyle="italic" />
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_gravity="center"
+                android:layout_weight="0.45"
+                android:fontFamily="sans-serif"
+                android:gravity="top|center_horizontal"
+                android:paddingTop="8dp"
+                android:text="Now go browse the latest feed."
+                android:textColor="@color/md_white_1000"
+                android:textSize="14sp" />
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+</android.support.v7.widget.CardView>

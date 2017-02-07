@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WYK</string>
+    <string name="facebook_app_id">1828210270742934</string>
+    <string name="feed">Feed</string>
+    <string name="publications">Publications</string>
+    <string name="Welfare">Welfare</string>
+    <string name="double_quote">“</string>
+
+    <string name="title_activity_read_publication">Read</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+    <string name="title_activity_settings">Settings</string>
+
+</resources>

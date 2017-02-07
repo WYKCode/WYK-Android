@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/md_green_600</color>
+    <!-- <color name="colorPrimaryDark">@color/md_indigo_700</color> -->
+    <color name="colorPrimaryDark">#263238</color>
+    <color name="colorAccent">@color/md_amber_A700</color>
+
+    <color name="container_background">#151b1f</color>
+
+    <color name="feed">@color/md_green_600</color>
+    <color name="publications">@color/md_light_blue_600</color>
+    <color name="welfare">@color/md_pink_600</color>
+    <color name="funfair">@color/md_light_green_600</color>
+
+    <color name="timetable">@color/md_blue_grey_900</color>
+
+    <color name="school">@color/feed</color>
+    <color name="sa">@color/md_red_600</color>
+    <color name="ma">@color/md_deep_orange_600</color>
+
+    <color name="text_shadow">#7F000000</color>
+
+    <!-- MaterialDrawer DEFAULT DARK colors -->
+    <color name="material_drawer_dark_background">#303030</color>
+    <!-- MaterialDrawer DEFAULT DARK text / items colors -->
+    <color name="material_drawer_dark_primary_text">#DEFFFFFF</color>
+    <color name="material_drawer_dark_primary_icon">#8AFFFFFF</color>
+    <color name="material_drawer_dark_secondary_text">#8AFFFFFF</color>
+    <color name="material_drawer_dark_hint_text">#42FFFFFF</color>
+    <color name="material_drawer_dark_divider">#1FFFFFFF</color>
+    <!-- MaterialDrawer DEFAULT DARK drawer colors -->
+    <color name="material_drawer_dark_selected">#202020</color>
+    <color name="material_drawer_dark_selected_text">@color/material_drawer_primary</color>
+    <color name="material_drawer_dark_header_selection_text">#FFF</color>
+
+    <color name="black_overlay">#66000000</color>
+
+</resources>

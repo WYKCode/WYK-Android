@@ -1,0 +1,25 @@
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <PreferenceCategory
+        android:key="category_notifications"
+        android:title="Notifications">
+
+        <SwitchPreference
+            android:defaultValue="true"
+            android:key="notifications"
+            android:title="Notifications" />
+
+    </PreferenceCategory>
+
+    <PreferenceCategory
+        android:key="category_status"
+        android:title="Status">
+
+        <college.wyk.app.ui.settings.SelectClassPreference
+            android:defaultValue="-1"
+            android:key="class"
+            android:title="Class" />
+
+    </PreferenceCategory>
+
+</PreferenceScreen>

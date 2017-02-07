@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "845077938191",
+    "firebase_url": "https://wyk-students-1472894153388.firebaseio.com",
+    "project_id": "wyk-students-1472894153388",
+    "storage_bucket": "wyk-students-1472894153388.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:845077938191:android:7b526595b2cd18d9",
+        "android_client_info": {
+          "package_name": "college.wyk.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "845077938191-6lcis562g1b1o21sbc78i8lmktd2lb27.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbv1V1lOV1JB96Kp2xzkkTahBaFAv7YM8"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

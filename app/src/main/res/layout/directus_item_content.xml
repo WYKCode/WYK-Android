@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:fresco="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/author"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textColor="@color/md_grey_400"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        tools:ignore="SmallSp"
+        tools:text="Darren Orf" />
+
+    <com.facebook.drawee.view.SimpleDraweeView
+        android:id="@+id/header_image"
+        android:layout_width="120dp"
+        android:layout_height="match_parent"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
+        fresco:actualImageScaleType="focusCrop"
+        fresco:fadeDuration="300"
+        fresco:roundedCornerRadius="4dp"/>
+
+    <ImageView
+        android:id="@+id/is_external_icon"
+        android:layout_width="14dp"
+        android:layout_height="14dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="-1dp"
+        android:layout_marginRight="10dp"
+        android:layout_toStartOf="@id/header_image" />
+
+    <TextView
+        android:id="@+id/description"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/time"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/author"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:layout_toStartOf="@+id/header_image"
+        android:fontFamily="sans-serif-condensed"
+        android:textAlignment="viewStart"
+        android:textColor="#040404"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:typeface="sans"
+        tools:text="This should be a long description like this example that I'm showing." />
+
+    <TextView
+        android:id="@+id/time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:alpha=".54"
+        android:textColor="#343434"
+        android:textSize="10sp"
+        tools:text="12 hours ago" />
+
+</RelativeLayout>

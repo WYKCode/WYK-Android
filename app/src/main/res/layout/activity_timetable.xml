@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/root_view"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/timetable"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:weightSum="1">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/timetable"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
+        app:titleTextColor="@color/md_white_1000" />
+
+    <com.gigamole.navigationtabstrip.NavigationTabStrip
+        android:id='@+id/timetable_tab_strip'
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="2dp"
+        android:overScrollMode="never"
+        app:nts_active_color="#fff"
+        app:nts_color="#81D4FA"
+        app:nts_corners_radius="3.5dp"
+        app:nts_factor="1.0"
+        app:nts_gravity="bottom"
+        app:nts_inactive_color="#81ffffff"
+        app:nts_titles="@array/weekdays"
+        app:nts_type="point"
+        app:nts_weight="6dp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/timetable_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v4.view.ViewPager>
+
+</LinearLayout>

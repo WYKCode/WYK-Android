@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/expansion_view"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp" />
+
+    <college.wyk.app.commons.BetterMaterialViewPager
+        android:id="@+id/view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        app:viewpager_animatedHeaderImage="true"
+        app:viewpager_color="@color/colorPrimary"
+        app:viewpager_displayToolbarWhenSwipe="false"
+        app:viewpager_enableToolbarElevation="true"
+        app:viewpager_header="@layout/view_pager_header"
+        app:viewpager_headerAdditionalHeight="25dp"
+        app:viewpager_headerAlpha="1.0"
+        app:viewpager_headerHeight="260dp"
+        app:viewpager_hideLogoWithFade="false"
+        app:viewpager_hideToolbarAndTitle="false"
+        app:viewpager_logoMarginTop="0dp"
+        app:viewpager_pagerTitleStrip="@layout/pager_title_strip"
+        app:viewpager_parallaxHeaderFactor="6"
+        app:viewpager_transparentToolbar="false" />
+
+
+</RelativeLayout>
