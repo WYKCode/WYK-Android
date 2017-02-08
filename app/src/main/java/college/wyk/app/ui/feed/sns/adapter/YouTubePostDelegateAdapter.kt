@@ -11,20 +11,20 @@ import college.wyk.app.commons.adapter.ViewTypeDelegateAdapter
 import college.wyk.app.commons.inflate
 import college.wyk.app.commons.loadWithFresco
 import college.wyk.app.commons.toHumanReadableTime
-import college.wyk.app.model.sns.facebook.FacebookPagePost
-import kotlinx.android.synthetic.main.facebook_item.view.*
+import college.wyk.app.model.sns.youtube.YouTubeItemSnippet
+import college.wyk.app.model.sns.youtube.YouTubeItem
+import kotlinx.android.synthetic.main.youtube_item.view.*
 import java.util.*
 import kotlin.properties.Delegates
 
-class FacebookPostDelegateAdapter : ViewTypeDelegateAdapter {
+class YouTubePostDelegateAdapter : ViewTypeDelegateAdapter {
 
     override fun onCreateViewHolder(parent: ViewGroup): RecyclerView.ViewHolder {
         val viewHolder = PostViewHolder(parent)
         viewHolder.itemView.setOnClickListener {
             val post = viewHolder.boundItem
-            Log.i("WYK", post.type.name)
-            if (post.link != null) {
-                val intent = Intent(Intent.ACTION_VIEW, Uri.parse(post.link))
+            if (post.id.videoId != null) {
+                val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://www.youtube.com/watch?v=" + post.id.videoId))
                 parent.context.startActivity(intent)
             }
         }
@@ -33,23 +33,21 @@ class FacebookPostDelegateAdapter : ViewTypeDelegateAdapter {
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, item: AdapterBindable) {
         holder as PostViewHolder
-        holder.bind(item as FacebookPagePost)
+        holder.bind(item as YouTubeItem)
     }
 
-    class PostViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.facebook_item)) {
+    class PostViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(parent.inflate(R.layout.youtube_item)) {
 
-        var boundItem: FacebookPagePost by Delegates.notNull()
+        var boundItem: YouTubeItem by Delegates.notNull()
 
-        fun bind(item: FacebookPagePost) = with(itemView) {
+        fun bind(item: YouTubeItem) = with(itemView) {
             boundItem = item
-            time.text = Date(item.computeCreationTime()).toHumanReadableTime()
-            if (item.fullPicture != null) {
-                embedded_image.loadWithFresco(item.fullPicture)
-            } else {
-            }
-            if (item.message != null) {
-                message.text = item.message
-            } else {
+            time.text = Date(item.computeCreationTime()).toHumanReadableTime(offset = false)
+            title.text = item.snippet.title
+            embedded_image.loadWithFresco(item.snippet.thumbnails.high.url)
+            item.statistics?.let {
+                views.text = "${it.viewCount}"
+                likes.text = "${it.likeCount}"
             }
         }
 

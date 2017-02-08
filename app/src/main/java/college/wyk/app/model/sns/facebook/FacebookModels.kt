@@ -31,7 +31,7 @@ data class FacebookPagePost(
 
     override fun viewType() = ViewType.facebook_item
 
-    override fun computeCreationTime() = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS").parse(createdTime).time
+    override fun computeCreationTime() = Facebook.dateFormat.parse(createdTime).time
 
     override fun snsType() = SnsType.FACEBOOK
 

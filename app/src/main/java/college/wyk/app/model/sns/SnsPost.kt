@@ -13,6 +13,6 @@ interface SnsPost : AdapterBindable, Parcelable {
 
 enum class SnsType {
 
-    FACEBOOK, INSTAGRAM
+    FACEBOOK, INSTAGRAM, YOUTUBE
 
 }

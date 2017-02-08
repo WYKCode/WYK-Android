@@ -1,8 +1,12 @@
 package college.wyk.app.model.sns
 
+import android.util.Log
 import college.wyk.app.model.sns.facebook.Facebook
+import college.wyk.app.model.sns.facebook.PostType
 import college.wyk.app.model.sns.facebook.WykFacebookPages
 import college.wyk.app.model.sns.instagram.WykInstagramUsers
+import college.wyk.app.model.sns.youtube.WykYouTubeChannels
+import college.wyk.app.model.sns.youtube.YouTube
 import college.wyk.app.ui.feed.sns.MILLIS_IN_A_MONTH
 import rx.Observable
 import java.util.*
@@ -13,15 +17,20 @@ class SnsPostManager {
     fun pullStack(id: String, sinceMillis: Long, period: Long = MILLIS_IN_A_MONTH * 6): Observable<SnsStack> {
 
         val facebookPage = when (id) {
+            "CampusTV" -> WykFacebookPages.campusTV
             "SA" -> WykFacebookPages.studentsAssociation
             "MA" -> WykFacebookPages.musicAssociation
-            else -> WykFacebookPages.wahYanTimes
+            else -> null
         }
 
         val instagramAccount = when (id) {
             "SA" -> WykInstagramUsers.wykchivalry
-            "MA" -> null
-            else -> WykInstagramUsers.wykchivalry
+            else -> null
+        }
+
+        val youtubeChannel = when (id) {
+            "CampusTV" -> WykYouTubeChannels.campusTV
+            else -> null
         }
 
         return Observable.create {
@@ -36,7 +45,7 @@ class SnsPostManager {
             var useUrl = false
             var nextUrl = ""
 
-            while (!lastResponse) {
+            while (facebookPage != null && !lastResponse) {
 
                 val callResponse = if (!useUrl) facebookPage.api.getPosts(count = 100, since = newSinceMillis / 1000L, until = beforeMillis / 1000L)
                 else Facebook.getPagePostsByUrl(nextUrl)
@@ -52,7 +61,11 @@ class SnsPostManager {
                         nextUrl = root.paging.next
                     }
 
-                    allPosts.addAll(root.data)
+                    if (id == "CampusTV") {
+                        root.data.filter { it.type != PostType.video }.forEach { allPosts.add(it) }
+                    } else {
+                        allPosts.addAll(root.data)
+                    }
 
                 } else {
                     subscriber.onError(Throwable(response.message()))
@@ -74,6 +87,45 @@ class SnsPostManager {
 
                 } else {
                     subscriber.onError(Throwable(response.message()))
+                }
+            }
+
+            lastResponse = false
+
+            var pageToken: String? = null
+
+            while (youtubeChannel != null && !lastResponse) {
+                val callResponse = youtubeChannel.api.getVideos(pageToken, newSinceMillis, beforeMillis)
+                val response = callResponse.execute()
+                if (response.isSuccessful) {
+                    val root = response.body()
+
+                    if (root.nextPageToken == null) lastResponse = true
+                    else pageToken = root.nextPageToken
+
+                    for (item in root.items) {
+                        if (item.id.videoId == null) continue
+
+                        // fetch statistics
+                        val statsCallResponse = YouTube.api.getStatistics(YouTube.key, item.id.videoId)
+                        val statsResponse = statsCallResponse.execute()
+                        if (statsResponse.isSuccessful) {
+
+                            statsResponse.body().items.getOrNull(0)?.let {
+                                item.statistics = it.statistics
+                            }
+
+                        } else {
+                            Log.e("WYK", statsResponse.errorBody().string())
+                            continue
+                        }
+
+                    }
+
+                    allPosts.addAll(root.items)
+
+                } else {
+                    subscriber.onError(Throwable(response.errorBody().string()))
                 }
             }
 

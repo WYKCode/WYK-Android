@@ -36,8 +36,9 @@ class FeedFragment : Fragment() {
         view_pager.setMaterialViewPagerListener { page ->
             when (page) {
                 0 -> HeaderDesign.fromColorResAndUrl(R.color.school, "http://wyk.tigerhix.me/cover/feed.jpg")
-                1 -> HeaderDesign.fromColorResAndUrl(R.color.sa, "http://wyk.tigerhix.me/cover/SACover.png")
-                2 -> HeaderDesign.fromColorResAndUrl(R.color.ma, "http://wyk.tigerhix.me/cover/ma.jpg")
+                1 -> HeaderDesign.fromColorResAndUrl(R.color.campus_tv, "http://wyk.tigerhix.me/cover/campus_tv.jpg")
+                2 -> HeaderDesign.fromColorResAndUrl(R.color.sa, "http://wyk.tigerhix.me/cover/sa.png")
+                3 -> HeaderDesign.fromColorResAndUrl(R.color.ma, "http://wyk.tigerhix.me/cover/ma.jpg")
                 else -> null
             }
         }
@@ -50,17 +51,19 @@ class FeedAdapter(supportFragmentManager: FragmentManager) : FragmentStatePagerA
 
     override fun getItem(position: Int) = when (position) {
         0 -> DirectusFeedFragment()
-        1 -> SnsFeedFragment.newInstance("SA")
-        2 -> SnsFeedFragment.newInstance("MA")
+        1 -> SnsFeedFragment.newInstance("CampusTV")
+        2 -> SnsFeedFragment.newInstance("SA")
+        3 -> SnsFeedFragment.newInstance("MA")
         else -> SnsFeedFragment.newInstance(position.toString())
     }
 
-    override fun getCount() = 3
+    override fun getCount() = 4
 
     override fun getPageTitle(position: Int) = when (position) {
         0 -> "School"
-        1 -> "SA"
-        2 -> "MA"
+        1 -> "Campus TV"
+        2 -> "SA"
+        3 -> "MA"
         else -> ""
     }
 
@@ -69,8 +72,9 @@ class FeedAdapter(supportFragmentManager: FragmentManager) : FragmentStatePagerA
         val imageView = view.findViewById(R.id.tab_icon) as ImageView
         imageView.setImageResource(when (position) {
             0 -> R.drawable.ic_school_white_48dp
-            1 -> R.drawable.ic_group_white_48dp
-            2 -> R.drawable.ic_music_note_white_48dp
+            1 -> R.drawable.ic_videocam_white_48dp
+            2 -> R.drawable.ic_group_white_48dp
+            3 -> R.drawable.ic_music_note_white_48dp
             else -> R.drawable.ic_school_white_48dp
         })
         return view

@@ -13,6 +13,7 @@ enum class ViewType {
     directus_item,
     facebook_item,
     instagram_item,
+    youtube_item,
     publication_item,
     timetable_item
 

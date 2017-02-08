@@ -67,7 +67,12 @@ class SnsFeedFragment : SubscribedFragment() {
         }
 
         swipe_refresh_layout.setOnRefreshListener { requestPosts(clear = true) }
-        swipe_refresh_layout.setProgressBackgroundColorSchemeResource(if (id == "SA") R.color.sa else R.color.ma)
+        swipe_refresh_layout.setProgressBackgroundColorSchemeResource(when (id) {
+            "CampusTV" -> R.color.campus_tv
+            "SA" -> R.color.sa
+            "MA" -> R.color.ma
+            else -> R.color.md_black_1000
+        })
         swipe_refresh_layout.setColorSchemeResources(R.color.md_white_1000)
 
         if (savedInstanceState != null) {

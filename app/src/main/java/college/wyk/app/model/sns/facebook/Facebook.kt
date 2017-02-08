@@ -7,10 +7,12 @@ import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 import java.io.IOException
+import java.text.SimpleDateFormat
 
 object Facebook {
 
     val baseUrl = "https://graph.facebook.com/v2.7/"
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS")
 
     val api: FacebookApi
 
@@ -87,6 +89,11 @@ enum class WykFacebookPages(val api: FacebookPage) {
 
     wahYanTimes(FacebookPage(
             "236355593098825",
+            "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
+    )),
+
+    campusTV(FacebookPage(
+            "270214936348099",
             "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
     )),
 

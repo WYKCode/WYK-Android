@@ -9,6 +9,7 @@ class SnsPostAdapter : DelegatedAdapter() {
     init {
         delegateAdapters.put(ViewType.facebook_item.ordinal, FacebookPostDelegateAdapter())
         delegateAdapters.put(ViewType.instagram_item.ordinal, InstagramPostDelegateAdapter())
+        delegateAdapters.put(ViewType.youtube_item.ordinal, YouTubePostDelegateAdapter())
         items.add(loadingItem())
     }
 
@@ -42,6 +43,6 @@ class SnsPostAdapter : DelegatedAdapter() {
         notifyItemRangeChanged(initPosition, items.size + 1)
     }
 
-    fun getPosts() = items.filter { it.viewType() in listOf(ViewType.facebook_item, ViewType.instagram_item) }.map { it as SnsPost }
+    fun getPosts() = items.filter { it.viewType() in listOf(ViewType.facebook_item, ViewType.instagram_item, ViewType.youtube_item) }.map { it as SnsPost }
 
 }
