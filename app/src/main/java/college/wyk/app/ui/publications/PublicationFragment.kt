@@ -169,6 +169,8 @@ class PublicationDelegateAdapter : ViewTypeDelegateAdapter {
 
             val item = holder.boundItem
 
+            if (item.id == -1) return@setOnClickListener
+
             val folder = Cache.publicationFolder()
 
             fun openPDF(filename: String) {
@@ -182,6 +184,7 @@ class PublicationDelegateAdapter : ViewTypeDelegateAdapter {
                     intent.flags = Intent.FLAG_GRANT_READ_URI_PERMISSION or Intent.FLAG_ACTIVITY_NO_HISTORY
                     intent.setDataAndType(contentUri, app.contentResolver.getType(contentUri))
                     intent.putExtra(Intent.EXTRA_STREAM, contentUri)
+                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
 
                     try {
                         app.startActivity(intent)

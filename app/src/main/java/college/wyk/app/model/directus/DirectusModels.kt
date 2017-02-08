@@ -18,7 +18,7 @@ data class DirectusPost(
         val date: String,
         val body: String?,
         val header: File?,
-        @Json(name = "is_external") val isExternal: Int,
+        @Json(name = "is_external") val isExternal: Int?,
         @Json(name = "external_url") val externalUrl: String?
 ) : AdapterBindable, Parcelable, Stackable {
 
@@ -44,7 +44,7 @@ data class DirectusPost(
         dest?.writeString(date)
         dest?.writeString(body)
         dest?.writeParcelable(header, 0)
-        dest?.writeInt(isExternal)
+        dest?.writeInt(isExternal ?: 0)
         dest?.writeString(externalUrl)
     }
 

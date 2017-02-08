@@ -10,14 +10,14 @@
         icon="@drawable/ic_chrome_reader_mode_black_24dp"
         id="@+id/tab_publications"
         title="Publications" />
-    <tab
+    <!--<tab
         barColorWhenSelected="@color/welfare"
         icon="@drawable/ic_restaurant_menu_black_24dp"
         id="@+id/tab_welfare"
-        title="Welfare" />
-    <!--<tab
+        title="Welfare" />-->
+    <tab
         barColorWhenSelected="@color/funfair"
         icon="@drawable/ic_child_care_black_24dp"
         id="@+id/tab_funfair"
-        title="Fun Fair" />-->
+        title="Fun Fair" />
 </tabs>

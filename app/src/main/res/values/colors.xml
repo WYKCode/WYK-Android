@@ -10,7 +10,7 @@
     <color name="feed">@color/md_green_600</color>
     <color name="publications">@color/md_light_blue_600</color>
     <color name="welfare">@color/md_pink_600</color>
-    <color name="funfair">@color/md_light_green_600</color>
+    <color name="funfair">@color/md_blue_grey_600</color>
 
     <color name="timetable">@color/md_blue_grey_900</color>
 

@@ -91,7 +91,7 @@ enum class WykFacebookPages(val api: FacebookPage) {
     )),
 
     studentsAssociation(FacebookPage(
-            "1048485781896234",
+            "1549077841979591",
             "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
     )),
 

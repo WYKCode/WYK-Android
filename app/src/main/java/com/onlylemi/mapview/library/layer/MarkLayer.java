@@ -25,7 +25,8 @@ public class MarkLayer extends MapBaseLayer {
 
     private List<PointF> marks;
     private List<String> marksName;
-    private MarkIsClickListener listener;
+    private MarkIsClickListener markIsClickListener;
+    private MarkUnClickListener markUnClickListener;
 
     private Bitmap bmpMark, bmpMarkTouch;
 
@@ -48,10 +49,10 @@ public class MarkLayer extends MapBaseLayer {
     }
 
     private void initLayer() {
-        radiusMark = setValue(10f);
+        radiusMark = setValue(14f);
 
-        bmpMark = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark);
-        bmpMarkTouch = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.mark_touch);
+        bmpMark = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.off);
+        bmpMarkTouch = BitmapFactory.decodeResource(mapView.getResources(), R.mipmap.on);
 
         paint = new Paint();
         paint.setAntiAlias(true);
@@ -65,21 +66,27 @@ public class MarkLayer extends MapBaseLayer {
                 float[] goal = mapView.convertMapXYToScreenXY(event.getX(), event.getY());
                 for (int i = 0; i < marks.size(); i++) {
                     if (MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
-                            marks.get(i).x - bmpMark.getWidth() / 2, marks.get(i).y - bmpMark
-                                    .getHeight() / 2) <= 50) {
+                            marks.get(i).x - bmpMark.getWidth() / 2 + 25, marks.get(i).y - bmpMark
+                                    .getHeight() / 2 + 25) <= 50) {
                         num = i;
                         isClickMark = true;
                         break;
                     }
 
                     if (i == marks.size() - 1) {
+                        if (isClickMark) {
+                            markUnClickListener.markUnClick(num);
+                            mapView.refresh();
+                        }
                         isClickMark = false;
                     }
                 }
             }
 
-            if (listener != null && isClickMark) {
-                listener.markIsClick(num);
+            if (markIsClickListener != null) {
+                if (isClickMark) {
+                    markIsClickListener.markIsClick(num);
+                }
                 mapView.refresh();
             }
         }
@@ -96,20 +103,23 @@ public class MarkLayer extends MapBaseLayer {
                     float[] goal = {mark.x, mark.y};
                     currentMatrix.mapPoints(goal);
 
-                    paint.setColor(Color.BLACK);
+                    paint.setColor(Color.parseColor("#212121"));
+                    paint.setShadowLayer(2f, 0, 1f, Color.GRAY);
                     paint.setTextSize(radiusMark);
+                    paint.setTextAlign(Paint.Align.CENTER);
                     //mark name
-                    if (mapView.getCurrentZoom() > 1.0 && marksName != null
+                    if (false && mapView.getCurrentZoom() > 1.0 && marksName != null
                             && marksName.size() == marks.size()) {
-                        canvas.drawText(marksName.get(i), goal[0] - radiusMark, goal[1] -
-                                radiusMark / 2, paint);
+                        canvas.drawText(marksName.get(i), goal[0] - radiusMark + 20, goal[1] -
+                                radiusMark / 2 + 20, paint);
                     }
                     //mark ico
-                    canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
-                            goal[1] - bmpMark.getHeight() / 2, paint);
                     if (i == num && isClickMark) {
                         canvas.drawBitmap(bmpMarkTouch, goal[0] - bmpMarkTouch.getWidth() / 2,
                                 goal[1] - bmpMarkTouch.getHeight(), paint);
+                    } else {
+                        canvas.drawBitmap(bmpMark, goal[0] - bmpMark.getWidth() / 2,
+                                goal[1] - bmpMark.getHeight(), paint);
                     }
                 }
             }
@@ -146,10 +156,19 @@ public class MarkLayer extends MapBaseLayer {
     }
 
     public void setMarkIsClickListener(MarkIsClickListener listener) {
-        this.listener = listener;
+        this.markIsClickListener = listener;
     }
 
-    public interface MarkIsClickListener {
+    public void setMarkUnClickListener(MarkUnClickListener listener) {
+        this.markUnClickListener = listener;
+    }
+
+    interface MarkIsClickListener {
         void markIsClick(int num);
     }
+
+    interface MarkUnClickListener {
+        void markUnClick(int num);
+    }
+
 }

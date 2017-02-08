@@ -96,8 +96,8 @@ class LandingActivity : AppCompatActivity() {
                             when (it) {
                                 R.id.tab_feed -> FeedFragment()
                                 R.id.tab_publications -> PublicationFragment()
-                                R.id.tab_welfare -> WelfareFragment()
-                                // R.id.tab_funfair -> FunFairFragment()
+                                // R.id.tab_welfare -> WelfareFragment()
+                                R.id.tab_funfair -> FunFairFragment()
                                 else -> FeedFragment()
                             }
                     )
@@ -106,8 +106,8 @@ class LandingActivity : AppCompatActivity() {
             when (it) {
                 R.id.tab_feed -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.container_background), (255 * 0.1).toInt())
                 R.id.tab_publications -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.md_black_1000), (255 * 0.1).toInt())
-                R.id.tab_welfare -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.welfare), (255 * 0.1).toInt())
-                // R.id.tab_funfair -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.funfair), (255 * 0.1).toInt())
+                // R.id.tab_welfare -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.welfare), (255 * 0.1).toInt())
+                R.id.tab_funfair -> StatusBarUtil.setColorForDrawerLayout(this, drawer.drawerLayout, resources.getColor(R.color.funfair), (255 * 0.1).toInt())
             }
         }
         bottom_bar.setOnTabReselectListener {
