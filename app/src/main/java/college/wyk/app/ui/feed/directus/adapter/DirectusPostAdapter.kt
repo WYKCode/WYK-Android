@@ -35,8 +35,8 @@ class DirectusPostAdapter : DelegatedAdapter() {
         items.removeAt(initPosition)
         notifyItemRemoved(initPosition)
 
-        for (i in 1..20) items.add(blankItem())
-        notifyItemRangeChanged(initPosition, items.size + 20)
+        for (i in 1..1) items.add(blankItem())
+        notifyItemRangeChanged(initPosition, items.size + 1)
     }
 
     fun getPosts() = items.filter { it.viewType() == ViewType.directus_item }.map { it as DirectusPost }

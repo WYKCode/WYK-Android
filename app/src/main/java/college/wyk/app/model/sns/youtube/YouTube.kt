@@ -10,7 +10,8 @@ import java.util.*
 object YouTube {
 
     val baseUrl = "https://www.googleapis.com/youtube/v3/"
-    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSXXX")
+    val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS")
+    val outDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
     val api: YouTubeApi
     const val key = "AIzaSyCW_P7MJ8SLTLInUsiWMQmPlBG9CSH52iM"
@@ -30,7 +31,7 @@ object YouTube {
 class YouTubeChannel(val id: String) {
 
     fun getVideos(pageToken: String? = null, since: Long? = null, until: Long? = null): Call<YouTubeSearchResultRoot> {
-        return YouTube.api.getChannelVideos(YouTube.key, id, pageToken = pageToken, publishedAfter = since?.let { YouTube.dateFormat.format(Date(it)) }, publishedBefore = until?.let { YouTube.dateFormat.format(Date(it)) })
+        return YouTube.api.getChannelVideos(YouTube.key, id, pageToken = pageToken, publishedAfter = since?.let { YouTube.outDateFormat.format(Date(it)) }, publishedBefore = until?.let { YouTube.outDateFormat.format(Date(it)) })
     }
 
 }

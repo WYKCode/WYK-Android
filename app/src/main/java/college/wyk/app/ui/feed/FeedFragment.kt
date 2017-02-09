@@ -35,14 +35,15 @@ class FeedFragment : Fragment() {
         view_pager.viewPager.adapter = FeedAdapter(activity.supportFragmentManager)
         view_pager.setMaterialViewPagerListener { page ->
             when (page) {
-                0 -> HeaderDesign.fromColorResAndUrl(R.color.school, "http://wyk.tigerhix.me/cover/feed.jpg")
-                1 -> HeaderDesign.fromColorResAndUrl(R.color.campus_tv, "http://wyk.tigerhix.me/cover/campus_tv.jpg")
-                2 -> HeaderDesign.fromColorResAndUrl(R.color.sa, "http://wyk.tigerhix.me/cover/sa.png")
-                3 -> HeaderDesign.fromColorResAndUrl(R.color.ma, "http://wyk.tigerhix.me/cover/ma.jpg")
+                indices["School"] -> HeaderDesign.fromColorResAndUrl(R.color.school, "http://wyk.tigerhix.me/cover/feed.jpg")
+                indices["CampusTV"] -> HeaderDesign.fromColorResAndUrl(R.color.campus_tv, "http://wyk.tigerhix.me/cover/campus_tv.jpg")
+                indices["SA"] -> HeaderDesign.fromColorResAndUrl(R.color.sa, "http://wyk.tigerhix.me/cover/sa.png")
+                indices["MA"] -> HeaderDesign.fromColorResAndUrl(R.color.ma, "http://wyk.tigerhix.me/cover/ma.jpg")
                 else -> null
             }
         }
         view_pager.pagerTitleStrip.setViewPager(view_pager.viewPager)
+        view_pager.viewPager.currentItem = indices["School"]!!
     }
 
 }
@@ -50,20 +51,20 @@ class FeedFragment : Fragment() {
 class FeedAdapter(supportFragmentManager: FragmentManager) : FragmentStatePagerAdapter(supportFragmentManager), PagerSlidingTabStrip.CustomTabProvider {
 
     override fun getItem(position: Int) = when (position) {
-        0 -> DirectusFeedFragment()
-        1 -> SnsFeedFragment.newInstance("CampusTV")
-        2 -> SnsFeedFragment.newInstance("SA")
-        3 -> SnsFeedFragment.newInstance("MA")
+        indices["School"] -> DirectusFeedFragment()
+        indices["CampusTV"] -> SnsFeedFragment.newInstance("CampusTV")
+        indices["SA"] -> SnsFeedFragment.newInstance("SA")
+        indices["MA"] -> SnsFeedFragment.newInstance("MA")
         else -> SnsFeedFragment.newInstance(position.toString())
     }
 
     override fun getCount() = 4
 
     override fun getPageTitle(position: Int) = when (position) {
-        0 -> "School"
-        1 -> "Campus TV"
-        2 -> "SA"
-        3 -> "MA"
+        indices["School"] -> "School"
+        indices["CampusTV"] -> "Campus TV"
+        indices["SA"] -> "SA"
+        indices["MA"] -> "MA"
         else -> ""
     }
 
@@ -71,10 +72,10 @@ class FeedAdapter(supportFragmentManager: FragmentManager) : FragmentStatePagerA
         val view = parent.inflate(R.layout.tab, false)
         val imageView = view.findViewById(R.id.tab_icon) as ImageView
         imageView.setImageResource(when (position) {
-            0 -> R.drawable.ic_school_white_48dp
-            1 -> R.drawable.ic_videocam_white_48dp
-            2 -> R.drawable.ic_group_white_48dp
-            3 -> R.drawable.ic_music_note_white_48dp
+            indices["School"] -> R.drawable.ic_school_white_48dp
+            indices["CampusTV"] -> R.drawable.ic_videocam_white_48dp
+            indices["SA"] -> R.drawable.ic_group_white_48dp
+            indices["MA"] -> R.drawable.ic_music_note_white_48dp
             else -> R.drawable.ic_school_white_48dp
         })
         return view
@@ -91,3 +92,10 @@ class FeedAdapter(supportFragmentManager: FragmentManager) : FragmentStatePagerA
     }
 
 }
+
+val indices = mapOf(
+        "MA" to 3,
+        "SA" to 2,
+        "School" to 1,
+        "CampusTV" to 0
+)

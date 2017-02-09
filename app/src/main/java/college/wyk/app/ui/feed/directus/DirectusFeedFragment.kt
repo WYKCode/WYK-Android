@@ -37,30 +37,36 @@ class DirectusFeedFragment : SubscribedFragment() {
 
         val linearLayout = LinearLayoutManager(context)
 
-        post_list.apply {
-            setHasFixedSize(true)
-            layoutManager = linearLayout
-            clearOnScrollListeners()
-            addOnScrollListener(OnScrollListener({ requestPosts() }, linearLayout))
+        if (post_list != null) { // to let Instant Run work properly
 
-            // use header decorator
-            addItemDecoration(MaterialViewPagerHeaderDecorator())
+            post_list.apply {
+                setHasFixedSize(true)
+                layoutManager = linearLayout
+                clearOnScrollListeners()
+                addOnScrollListener(OnScrollListener({ requestPosts() }, linearLayout))
+
+                // use header decorator
+                addItemDecoration(MaterialViewPagerHeaderDecorator())
+            }
+
+            if (post_list.adapter == null) {
+                post_list.adapter = DirectusPostAdapter()
+            }
+
+            swipe_refresh_layout.setOnRefreshListener { requestPosts(clear = true) }
+            swipe_refresh_layout.setProgressBackgroundColorSchemeResource(R.color.school)
+            swipe_refresh_layout.setColorSchemeResources(R.color.md_white_1000)
+
         }
-
-        if (post_list.adapter == null) {
-            post_list.adapter = DirectusPostAdapter()
-        }
-
-        swipe_refresh_layout.setOnRefreshListener { requestPosts(clear = true) }
-        swipe_refresh_layout.setProgressBackgroundColorSchemeResource(R.color.school)
-        swipe_refresh_layout.setColorSchemeResources(R.color.md_white_1000)
 
         if (savedInstanceState != null) {
             this.stack = Parcels.unwrap(savedInstanceState.getParcelable(FEED_STACK))
             if (this.stack != null) {
-                (post_list.adapter as DirectusPostAdapter).apply {
-                    setPosts(stack!!.items)
-                    markEnd()
+                if (post_list != null) {
+                    (post_list.adapter as DirectusPostAdapter).apply {
+                        setPosts(stack!!.items)
+                        markEnd()
+                    }
                 }
             }
         } else {
@@ -70,9 +76,11 @@ class DirectusFeedFragment : SubscribedFragment() {
 
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
-        val posts = (post_list.adapter as DirectusPostAdapter).getPosts()
-        if (stack != null && posts.isNotEmpty()) {
-            outState.putParcelable(FEED_STACK, Parcels.wrap(stack!!.copy(posts)))
+        if (post_list != null) {
+            val posts = (post_list.adapter as DirectusPostAdapter).getPosts()
+            if (stack != null && posts.isNotEmpty()) {
+                outState.putParcelable(FEED_STACK, Parcels.wrap(stack!!.copy(posts)))
+            }
         }
     }
 

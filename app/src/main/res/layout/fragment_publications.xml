@@ -16,7 +16,7 @@
     <View
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:alpha=".2"
+        android:alpha=".32"
         android:background="@color/md_black_1000" />
 
     <android.support.design.widget.CoordinatorLayout

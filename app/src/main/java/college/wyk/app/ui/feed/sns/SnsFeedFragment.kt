@@ -52,35 +52,41 @@ class SnsFeedFragment : SubscribedFragment() {
 
         val linearLayout = LinearLayoutManager(context)
 
-        post_list.apply {
-            setHasFixedSize(true)
-            layoutManager = linearLayout
-            clearOnScrollListeners()
-            addOnScrollListener(OnScrollListener({ requestPosts() }, linearLayout))
+        if (post_list != null) { // to let Instant Run work properly
 
-            // use header decorator
-            addItemDecoration(MaterialViewPagerHeaderDecorator())
+            post_list.apply {
+                setHasFixedSize(true)
+                layoutManager = linearLayout
+                clearOnScrollListeners()
+                addOnScrollListener(OnScrollListener({ requestPosts() }, linearLayout))
+
+                // use header decorator
+                addItemDecoration(MaterialViewPagerHeaderDecorator())
+            }
+
+            if (post_list.adapter == null) {
+                post_list.adapter = SnsPostAdapter()
+            }
+
+            swipe_refresh_layout.setOnRefreshListener { requestPosts(clear = true) }
+            swipe_refresh_layout.setProgressBackgroundColorSchemeResource(when (id) {
+                "CampusTV" -> R.color.campus_tv
+                "SA" -> R.color.sa
+                "MA" -> R.color.ma
+                else -> R.color.md_black_1000
+            })
+            swipe_refresh_layout.setColorSchemeResources(R.color.md_white_1000)
+
         }
-
-        if (post_list.adapter == null) {
-            post_list.adapter = SnsPostAdapter()
-        }
-
-        swipe_refresh_layout.setOnRefreshListener { requestPosts(clear = true) }
-        swipe_refresh_layout.setProgressBackgroundColorSchemeResource(when (id) {
-            "CampusTV" -> R.color.campus_tv
-            "SA" -> R.color.sa
-            "MA" -> R.color.ma
-            else -> R.color.md_black_1000
-        })
-        swipe_refresh_layout.setColorSchemeResources(R.color.md_white_1000)
 
         if (savedInstanceState != null) {
             val instanceState = WykApplication.instance.snsStacks[id]
             if (instanceState != null && instanceState.items.size > 0) {
-                (post_list.adapter as SnsPostAdapter).apply {
-                    setPosts(instanceState.items)
-                    markEnd()
+                if (post_list != null) {
+                    (post_list.adapter as SnsPostAdapter).apply {
+                        setPosts(instanceState.items)
+                        markEnd()
+                    }
                 }
             } else {
                 requestPosts(clear = true)

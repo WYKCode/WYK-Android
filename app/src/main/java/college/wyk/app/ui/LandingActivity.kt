@@ -3,6 +3,7 @@ package college.wyk.app.ui
 import android.app.FragmentTransaction
 import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v7.app.AppCompatActivity
@@ -56,6 +57,7 @@ class LandingActivity : AppCompatActivity() {
                         PrimaryDrawerItem().withIdentifier(400L).withName("Timetable").withIcon(CommunityMaterial.Icon.cmd_timetable).withSelectable(false)
                 )
                 .addStickyDrawerItems(
+                        PrimaryDrawerItem().withIdentifier(500L).withName("Visit website").withIcon(GoogleMaterial.Icon.gmd_open_in_new).withSelectable(false),
                         PrimaryDrawerItem().withIdentifier(501L).withName("Settings").withIcon(GoogleMaterial.Icon.gmd_settings).withSelectable(false),
                         PrimaryDrawerItem().withIdentifier(502L).withName("About").withIcon(GoogleMaterial.Icon.gmd_help).withSelectable(false)
                 )
@@ -65,6 +67,9 @@ class LandingActivity : AppCompatActivity() {
                     when (drawerItem.identifier) {
                         400L -> {
                             startActivity(Intent(this, TimetableActivity::class.java))
+                        }
+                        500L -> {
+                            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("http://wyk.edu.hk")))
                         }
                         501L -> {
                             startActivity(Intent(this, SettingsActivity::class.java))

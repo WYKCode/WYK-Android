@@ -104,7 +104,7 @@ class PublicationFragment : SubscribedFragment() {
 
     private fun createTarget() = object : SimpleTarget<Bitmap>() {
         override fun onResourceReady(resource: Bitmap, glideAnimation: GlideAnimation<in Bitmap>) {
-            GalleryBackground.crossfade(blur_view, GalleryBackground.blur(blur_view.context, resource, 10f))
+            GalleryBackground.crossfade(blur_view, GalleryBackground.blur(blur_view.context, resource, 25f))
         }
     }
 
@@ -144,7 +144,7 @@ class PublicationAdapter(val helper: CardAdapterHelper) : DelegatedAdapter() {
     fun setPublications(publications: List<Publication>) {
         items.clear()
         items.addAll(publications)
-        items.add(Publication(1, -1, "fake", "fake", college.wyk.app.model.directus.File("fake", "fake", "fake", "fake"), "fake"))
+        // items.add(Publication(1, -1, "fake", "fake", college.wyk.app.model.directus.File("fake", "fake", "fake", "fake"), "fake"))
         notifyDataSetChanged()
     }
 

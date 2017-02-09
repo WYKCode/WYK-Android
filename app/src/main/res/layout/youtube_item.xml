@@ -36,9 +36,9 @@
         <View
             android:id="@+id/card_gradient_overlay"
             android:layout_width="match_parent"
-            android:layout_height="100dp"
+            android:layout_height="120dp"
             android:layout_gravity="bottom"
-            android:alpha=".6"
+            android:alpha="1"
             android:background="@drawable/gradient_overlay" />
 
         <TextView

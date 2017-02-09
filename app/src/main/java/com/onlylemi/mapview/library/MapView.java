@@ -203,7 +203,6 @@ public class MapView extends SurfaceView implements SurfaceHolder.Callback {
                 break;
             case MotionEvent.ACTION_UP:
                 if (withFloorPlan(event.getX(), event.getY())) {
-//                    Log.i(TAG, event.getX() + " " + event.getY());
                     // layers on touch
                     for (MapBaseLayer layer : layers) {
                         layer.onTouch(event);

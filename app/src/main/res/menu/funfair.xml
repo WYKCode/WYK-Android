@@ -5,8 +5,16 @@
     <item
         android:id="@+id/switch_floor"
         android:icon="@drawable/ic_layers_white_48dp"
-        android:orderInCategory="1"
+        android:orderInCategory="2"
         android:title="Switch Floor"
         app:showAsAction="always" />
 
+    <!--<item
+        android:id="@+id/legend"
+        android:icon="@drawable/ic_help_white_48dp"
+        android:orderInCategory="1"
+        android:title="Legend"
+        app:showAsAction="ifRoom" />-->
+
 </menu>
+

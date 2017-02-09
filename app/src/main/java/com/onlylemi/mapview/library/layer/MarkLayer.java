@@ -66,8 +66,8 @@ public class MarkLayer extends MapBaseLayer {
                 float[] goal = mapView.convertMapXYToScreenXY(event.getX(), event.getY());
                 for (int i = 0; i < marks.size(); i++) {
                     if (MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
-                            marks.get(i).x - bmpMark.getWidth() / 2 + 25, marks.get(i).y - bmpMark
-                                    .getHeight() / 2 + 25) <= 50) {
+                            marks.get(i).x - bmpMark.getWidth() / 2, marks.get(i).y - bmpMark
+                                    .getHeight() / 2) <= 50) {
                         num = i;
                         isClickMark = true;
                         break;
