@@ -45,7 +45,7 @@ class LandingActivity : AppCompatActivity() {
                 ProfileDrawerItem()
                         .withName("WYK Student")
                         .withEmail("student@wyk.college")
-                        .withIcon(resources.getDrawable(R.drawable.avatar))
+                //.withIcon(resources.getDrawable(R.drawable.avatar))
         ).withSelectionListEnabled(false).build()
 
         // set up drawer
