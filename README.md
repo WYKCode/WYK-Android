@@ -41,6 +41,6 @@ Source code (excluding assets) is distributed under the MIT license. See ``LICEN
 
 Proudly presented by [Tiger Tang](https://github.com/tigerhix/).
 * Twitter: [@tigerhixtang](https://twitter.com/tigerhixtang)
-* Email: [tigerhix@gmail.com](tigerhix@gmail.com)
+* Email: [tigerhix@gmail.com](mailto://tigerhix@gmail.com)
 
 Special thanks to my friends, my schoolmates and the [51st Students' Association of Wah Yan College, Kowloon](https://www.facebook.com/WYKStudentsAssociation/) for their ideas, suggestions and contributions throughout the project. This project wouldn't be possible without their love and support.
