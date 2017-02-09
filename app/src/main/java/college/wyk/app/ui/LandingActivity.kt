@@ -14,6 +14,7 @@ import college.wyk.app.commons.BetterMaterialViewPager
 import college.wyk.app.commons.alterColor
 import college.wyk.app.commons.newThemedDialog
 import college.wyk.app.ui.feed.FeedFragment
+import college.wyk.app.ui.feed.indices
 import college.wyk.app.ui.funfair.FunFairFragment
 import college.wyk.app.ui.publications.PublicationFragment
 import college.wyk.app.ui.settings.SettingsActivity
@@ -117,7 +118,7 @@ class LandingActivity : AppCompatActivity() {
         }
         bottom_bar.setOnTabReselectListener {
             if (it == R.id.tab_feed) {
-                (root_view.findViewById(R.id.view_pager) as BetterMaterialViewPager).viewPager.setCurrentItem(0, true)
+                (root_view.findViewById(R.id.view_pager) as BetterMaterialViewPager).viewPager.setCurrentItem(indices["School"]!!, true)
             }
         }
         for (i in 1..bottom_bar.tabCount) {
