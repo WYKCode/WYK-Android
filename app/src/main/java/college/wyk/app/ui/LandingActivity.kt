@@ -19,7 +19,6 @@ import college.wyk.app.ui.funfair.FunFairFragment
 import college.wyk.app.ui.publications.PublicationFragment
 import college.wyk.app.ui.settings.SettingsActivity
 import college.wyk.app.ui.timetable.TimetableActivity
-import college.wyk.app.ui.welfare.WelfareFragment
 import com.jaeger.library.StatusBarUtil
 import com.mikepenz.community_material_typeface_library.CommunityMaterial
 import com.mikepenz.google_material_typeface_library.GoogleMaterial
@@ -44,8 +43,8 @@ class LandingActivity : AppCompatActivity() {
         // set up account
         val headerResult = AccountHeaderBuilder().withActivity(this).addProfiles(
                 ProfileDrawerItem()
-                        .withName("Tiger Tang")
-                        .withEmail("tigerhix@gmail.com")
+                        .withName("WYK Student")
+                        .withEmail("student@wyk.college")
                         .withIcon(resources.getDrawable(R.drawable.avatar))
         ).withSelectionListEnabled(false).build()
 
