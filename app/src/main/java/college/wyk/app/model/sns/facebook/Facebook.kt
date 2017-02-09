@@ -1,6 +1,8 @@
 package college.wyk.app.model.sns.facebook
 
 import android.util.Log
+import college.wyk.app.R
+import college.wyk.app.WykApplication
 import okhttp3.*
 import okio.Buffer
 import retrofit2.Call
@@ -15,6 +17,7 @@ object Facebook {
     val dateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss+SSSS")
 
     val api: FacebookApi
+    val key: String by lazy { WykApplication.instance.resources.getString(R.string.facebook_key) }
 
     init {
         val client = OkHttpClient.Builder().addInterceptor(LoggingInterceptor()).build()
@@ -77,34 +80,22 @@ object Facebook {
 
 }
 
-class FacebookPage(val id: String, val accessToken: String) {
+class FacebookPage(val id: String) {
 
     fun getPosts(count: Int, since: Long? = null, until: Long? = null): Call<FacebookPagePostRoot> {
-        return Facebook.api.getPagePosts(pageId = id, limit = count, since = since, until = until, accessToken = accessToken)
+        return Facebook.api.getPagePosts(pageId = id, limit = count, since = since, until = until, accessToken = Facebook.key)
     }
 
 }
 
 enum class WykFacebookPages(val api: FacebookPage) {
 
-    wahYanTimes(FacebookPage(
-            "236355593098825",
-            "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
-    )),
+    wahYanTimes(FacebookPage("236355593098825")),
 
-    campusTV(FacebookPage(
-            "270214936348099",
-            "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
-    )),
+    campusTV(FacebookPage("270214936348099")),
 
-    studentsAssociation(FacebookPage(
-            "1549077841979591",
-            "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
-    )),
+    studentsAssociation(FacebookPage("1549077841979591")),
 
-    musicAssociation(FacebookPage(
-            "137725573334336",
-            "EAAZAZBv1ZCDKZAYBAOatY18ZAePinMjpH2OOHJkOEvC8ZAtI1PTNfI8EZCJTH7Kf0rb754rgeEmZAZAQZAkmqtRRNitZCZC6YXTMUEeUEbdUuaOBPiDkgPMrKn0bPwgYmZBjTMP0hMy3IcMEtCjLZAcZAUwjnpiMsBXW7HFYywgb7s8XTW9bAZDZD"
-    ));
+    musicAssociation(FacebookPage("137725573334336"));
 
 }

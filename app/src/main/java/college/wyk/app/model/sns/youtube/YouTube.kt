@@ -1,5 +1,7 @@
 package college.wyk.app.model.sns.youtube
 
+import college.wyk.app.R
+import college.wyk.app.WykApplication
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -14,7 +16,7 @@ object YouTube {
     val outDateFormat = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSZ")
 
     val api: YouTubeApi
-    const val key = "AIzaSyCW_P7MJ8SLTLInUsiWMQmPlBG9CSH52iM"
+    val key: String by lazy { WykApplication.instance.resources.getString(R.string.youtube_key) }
 
     init {
         val client = OkHttpClient.Builder().build()

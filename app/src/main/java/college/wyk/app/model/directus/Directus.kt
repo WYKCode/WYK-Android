@@ -1,5 +1,7 @@
 package college.wyk.app.model.directus
 
+import college.wyk.app.R
+import college.wyk.app.WykApplication
 import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
@@ -8,9 +10,9 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 object Directus {
 
     val baseUrl = "http://wyk.tigerhix.me"
-    val authToken = "aYkYL9MikzM1Yrir"
 
     val api: DirectusApi
+    val key: String by lazy { WykApplication.instance.resources.getString(R.string.directus_key) }
 
     init {
         val httpClient = OkHttpClient.Builder()
@@ -19,7 +21,7 @@ object Directus {
                     val original = chain.request()
                     // add request headers: authorization
                     val requestBuilder = original.newBuilder()
-                            .header("Authorization", "Bearer " + authToken)
+                            .header("Authorization", "Bearer " + key)
                             .method(original.method(), original.body())
                     chain.proceed(requestBuilder.build())
                 }
