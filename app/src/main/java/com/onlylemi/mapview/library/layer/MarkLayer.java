@@ -7,6 +7,7 @@ import android.graphics.Color;
 import android.graphics.Matrix;
 import android.graphics.Paint;
 import android.graphics.PointF;
+import android.util.Log;
 import android.view.MotionEvent;
 
 import com.onlylemi.mapview.library.MapView;
@@ -64,10 +65,11 @@ public class MarkLayer extends MapBaseLayer {
         if (marks != null) {
             if (!marks.isEmpty()) {
                 float[] goal = mapView.convertMapXYToScreenXY(event.getX(), event.getY());
+                Log.i("WYK", "x: " + goal[0] + "; y: " + goal[1]);
                 for (int i = 0; i < marks.size(); i++) {
                     if (MapMath.getDistanceBetweenTwoPoints(goal[0], goal[1],
-                            marks.get(i).x - bmpMark.getWidth() / 2, marks.get(i).y - bmpMark
-                                    .getHeight() / 2) <= 50) {
+                            marks.get(i).x, marks.get(i).y - 60) <= 40) {
+
                         num = i;
                         isClickMark = true;
                         break;
@@ -163,11 +165,11 @@ public class MarkLayer extends MapBaseLayer {
         this.markUnClickListener = listener;
     }
 
-    interface MarkIsClickListener {
+    public interface MarkIsClickListener {
         void markIsClick(int num);
     }
 
-    interface MarkUnClickListener {
+    public interface MarkUnClickListener {
         void markUnClick(int num);
     }
 

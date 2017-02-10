@@ -77,10 +77,10 @@ class LandingActivity : AppCompatActivity() {
                         502L -> {
                             val dialog = newThemedDialog(this)
                                     .customView(R.layout.dialog_about, false)
-                                    .neutralText("View Licenses")
+                                    .neutralText("View on Github")
                                     .positiveText("Close")
                                     .onPositive { dialog, action -> dialog.dismiss() }
-                                    .onNeutral { dialog, action -> }
+                                    .onNeutral { dialog, action -> startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/WYKCode/WYK-Android"))) }
                                     .show()
                             val dialogView = dialog.view
                             dialogView.about_badge.setImageResource(R.drawable.badge)

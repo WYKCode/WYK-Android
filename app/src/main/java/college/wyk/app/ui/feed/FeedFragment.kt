@@ -32,7 +32,7 @@ class FeedFragment : Fragment() {
         landingActivity.updateToolbar(toolbar)
 
         // set up view pager
-        view_pager.viewPager.adapter = FeedAdapter(activity.supportFragmentManager)
+        view_pager.viewPager.adapter = FeedAdapter(childFragmentManager) // use child fragment manager
         view_pager.setMaterialViewPagerListener { page ->
             when (page) {
                 indices["School"] -> HeaderDesign.fromColorResAndUrl(R.color.school, "http://wyk.tigerhix.me/cover/feed.jpg")

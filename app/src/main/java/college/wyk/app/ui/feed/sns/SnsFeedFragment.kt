@@ -1,6 +1,7 @@
 package college.wyk.app.ui.feed.sns
 
 import android.os.Bundle
+import android.os.Handler
 import android.support.design.widget.Snackbar
 import android.support.v7.widget.LinearLayoutManager
 import android.util.Log
@@ -140,7 +141,14 @@ class SnsFeedFragment : SubscribedFragment() {
 
                             Log.e("WYK", e.message)
                             Log.e("WYK", e.stackTrace.joinToString(separator = "\n"))
-                            Snackbar.make(post_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
+
+                            // would crash if Snackbar is initiated while fragment is not fully initialized
+                            activity.runOnUiThread {
+                                // run it delayed and on ui thread then!
+                                Handler().postDelayed({
+                                    Snackbar.make(post_list, e.message ?: "", Snackbar.LENGTH_LONG).show()
+                                }, 5)
+                            }
                         }
                 )
         super.subscriptions.add(subscription)
