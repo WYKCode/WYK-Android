@@ -1,6 +1,4 @@
-
 buildscript {
-
     repositories {
         jcenter()
     }
@@ -14,15 +12,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'com.neenbedankt.android-apt'
 android {
-    compileSdkVersion 24
-    buildToolsVersion "24.0.2"
+    compileSdkVersion 25
+    buildToolsVersion "24.0.3"
 
     defaultConfig {
         applicationId "college.wyk.app"
         minSdkVersion 21
-        targetSdkVersion 24
-        versionCode 6
-        versionName "1.0.1"
+        targetSdkVersion 25
+        versionCode 7
+        versionName "1.0.2"
         multiDexEnabled true
         renderscriptTargetApi 24
         renderscriptSupportModeEnabled true
@@ -39,11 +37,11 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
+    compile 'com.android.support:multidex:1.0.1'
     compile "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-
-
-    compile('com.github.florent37:materialviewpager:1.2.0@aar') {
+    compile('com.github.florent37:materialviewpager:1.2.0@aar')
+            {
         transitive = true
     }
     compile('com.mikepenz:materialdrawer:5.3.6@aar') {
@@ -52,10 +50,10 @@ dependencies {
     compile('io.nlopez.smartlocation:library:3.2.7') {
         transitive = false
     }
-
-    compile group: 'net.sourceforge.htmlcleaner', name: 'htmlcleaner', version: '2.16'
-    compile 'com.android.support:appcompat-v7:24.2.1'
-    compile 'com.android.support:design:24.2.1'
+    compile 'net.sourceforge.htmlcleaner:htmlcleaner:2.16'
+    compile 'com.android.support:appcompat-v7:25.1.1'
+    compile 'com.android.support:design:25.1.1'
+    compile 'com.android.support:support-v4:25.1.1'
     compile 'biz.kasual:materialnumberpicker:1.2.1'
     compile 'com.squareup.retrofit2:retrofit:2.1.0'
     compile 'com.squareup.retrofit2:converter-moshi:2.1.0'
@@ -74,11 +72,9 @@ dependencies {
     compile 'uk.co.chrisjenx:calligraphy:2.2.0'
     compile 'com.zzhoujay.richtext:richtext:2.0.4'
     compile 'com.github.jOOQ:jOOR:version-0.9.6'
-    compile 'com.google.android.gms:play-services:9.6.1'
     compile 'com.github.devlight.navigationtabstrip:navigationtabstrip:1.0.4'
     compile 'com.github.bumptech.glide:glide:3.7.0'
     compile 'jp.wasabeef:glide-transformations:2.0.1'
-    compile 'com.android.support:support-v4:24.2.1'
     compile 'com.coolerfall:android-http-download-manager:1.6.0'
     compile 'com.afollestad.material-dialogs:core:0.9.0.1'
     compile 'com.squareup.okhttp3:okhttp:3.4.1'
@@ -91,4 +87,3 @@ dependencies {
 repositories {
     mavenCentral()
 }
-apply plugin: 'com.google.gms.google-services'

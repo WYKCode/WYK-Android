@@ -1,3 +1,4 @@
+/*
 package college.wyk.app.ui.welfare
 
 import android.Manifest
@@ -101,4 +102,4 @@ class WelfareFragment : Fragment(), OnMapReadyCallback {
         map_container?.onLowMemory()
     }
 
-}
+}*/

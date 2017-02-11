@@ -48,7 +48,7 @@ class FacebookPostDelegateAdapter : ViewTypeDelegateAdapter {
             } else {
             }
             if (item.message != null) {
-                message.text = item.message
+                message.text = String(item.message.toByteArray(Charsets.UTF_8))
             } else {
             }
         }

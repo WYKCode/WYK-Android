@@ -67,7 +67,7 @@
                 android:layout_marginTop="4dp"
                 android:alpha=".87"
                 android:lineSpacingExtra="4dp"
-                android:text="Calling all members! Wah Yan Times meeting this Thursday 21/January at 1pm in Language Room. Earn stamps while having fun! \ud83d\ude1c"
+                android:text=""
                 android:textAlignment="viewStart"
                 android:textColor="@color/md_black_1000"
                 android:textSize="15sp"
