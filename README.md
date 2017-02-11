@@ -30,7 +30,7 @@ This Android app is written in [Kotlin](http://kotlinlang.org), a JVM language t
 
 ## Release History
 
-* 1.0.0
+* 1.0.2
     * First public release
 
 ## License
