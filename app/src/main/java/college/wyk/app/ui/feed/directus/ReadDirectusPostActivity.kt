@@ -7,6 +7,7 @@ import android.text.Html
 import android.view.ViewGroup
 import college.wyk.app.R
 import college.wyk.app.commons.loadWithFresco
+import college.wyk.app.commons.loadWithGlide
 import college.wyk.app.commons.toDate
 import college.wyk.app.commons.toTraditionalTime
 import college.wyk.app.model.directus.Directus
@@ -78,6 +79,7 @@ class ReadDirectusPostActivity : SlidingActivity() {
         StatusBarUtil.setColor(this, resources.getColor(R.color.md_black_1000), 0)
 
         richText.into(content_text)
+        badge.loadWithGlide(R.drawable.badge_greyscale)
     }
 
     override fun attachBaseContext(newBase: Context?) {

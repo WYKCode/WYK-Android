@@ -3,22 +3,31 @@
     android:id="@+id/content_root"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="28dp"
-    android:layout_marginLeft="30dp"
-    android:layout_marginRight="30dp"
-    android:layout_marginBottom="28dp">
+    android:layout_marginBottom="28dp"
+    android:layout_marginLeft="20dp"
+    android:layout_marginRight="20dp"
+    android:layout_marginTop="28dp">
 
     <TextView
         android:id="@+id/content_text"
         fontPath="Utopia-Regular.ttf"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/md_black_1000"
         android:alpha=".87"
-        android:textSize="18sp"
-        android:lineSpacingExtra="8dp"
-        android:textIsSelectable="true"
         android:focusable="true"
-        android:longClickable="true"/>
+        android:lineSpacingExtra="8dp"
+        android:longClickable="true"
+        android:textColor="@color/md_black_1000"
+        android:textIsSelectable="true"
+        android:textSize="18sp" />
+
+    <ImageView
+        android:id="@+id/badge"
+        android:layout_width="match_parent"
+        android:layout_height="110dp"
+        android:layout_below="@id/content_text"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="0dp"
+        android:alpha=".12" />
 
 </RelativeLayout>

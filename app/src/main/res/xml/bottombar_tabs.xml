@@ -14,10 +14,5 @@
         barColorWhenSelected="@color/welfare"
         icon="@drawable/ic_restaurant_menu_black_24dp"
         id="@+id/tab_welfare"
-        title="Welfare" />-->
-    <tab
-        barColorWhenSelected="@color/funfair"
-        icon="@drawable/ic_child_care_black_24dp"
-        id="@+id/tab_funfair"
-        title="Fun Fair" />
+        title="Welfare" />-->i
 </tabs>
