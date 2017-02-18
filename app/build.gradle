@@ -19,8 +19,8 @@ android {
         applicationId "college.wyk.app"
         minSdkVersion 21
         targetSdkVersion 25
-        versionCode 7
-        versionName "1.0.2"
+        versionCode 8
+        versionName "1.0.3"
         multiDexEnabled true
         renderscriptTargetApi 24
         renderscriptSupportModeEnabled true
