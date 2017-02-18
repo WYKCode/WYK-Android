@@ -24,18 +24,30 @@ This app is written in [Kotlin](http://kotlinlang.org) and designed in accordanc
 
 ## Getting Started
 
-This Android app is written in [Kotlin](http://kotlinlang.org), a JVM language that is more expressive and concise. Opening the project in [Android Studio](https://developer.android.com/studio/index.html) is recommended for its native Kotlin support. In case you have never used Kotlin, [here](https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664) is a great article to get you familiar with it.
+This Android app is written in [Kotlin](http://kotlinlang.org), an expressive and concise JVM language. [Android Studio](https://developer.android.com/studio/index.html) which ships with Kotlin support is strongly recommended. In case you have never heard of the language, [here](https://medium.com/@juanchosaravia/learn-kotlin-while-developing-an-android-app-introduction-567e21ff9664) is a great article to get you familiar with it.
 
 *Note: In order to build the app, you need to set your own API keys (as `string` resources).*
 
 ## Release History
 
+* 1.0.3
+    * Fixed crashing issues
+    * Removed redundent dependencies and code
+    * Clarify license
 * 1.0.2
     * First public release
 
 ## License
 
 Source code (excluding assets) is distributed under the MIT license. See ``LICENSE`` for more information.
+
+Libraries used in this project are licensed under:
+
+* [Apache 2.0 License](https://opensource.org/licenses/Apache-2.0)
+* [BSD 3 Clause License](https://opensource.org/licenses/BSD-3-Clause)
+* or [MIT License](https://opensource.org/licenses/MIT)
+
+[Utopia Regular](http://www.ctan.org/tex-archive/fonts/utopia/) font is licensed by Adobe Systems Incorporated.
 
 ## Meta
 
