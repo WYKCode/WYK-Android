@@ -88,7 +88,7 @@ class PublicationFragment : SubscribedFragment() {
 
     private fun notifyBackgroundChange() {
         if (publication_gallery == null || helper.currentItemPos + 1 >= publication_gallery.adapter.itemCount) return
-        if (lastPosition === helper.currentItemPos || blur_view == null) return
+        if (lastPosition == helper.currentItemPos || blur_view == null) return
         lastPosition = helper.currentItemPos
 
         blur_view.removeCallbacks(blurRunnable)
@@ -144,7 +144,6 @@ class PublicationAdapter(val helper: CardAdapterHelper) : DelegatedAdapter() {
     fun setPublications(publications: List<Publication>) {
         items.clear()
         items.addAll(publications)
-        // items.add(Publication(1, -1, "fake", "fake", college.wyk.app.model.directus.File("fake", "fake", "fake", "fake"), "fake"))
         notifyDataSetChanged()
     }
 
